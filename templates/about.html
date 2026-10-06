@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About · Student Early-Warning System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <div class="crest">
+      <span class="crest-mark">UB</span>
+      <div class="crest-text">
+        <strong>University of Benin</strong>
+        <span>Academic Early-Warning System</span>
+      </div>
+    </div>
+    <nav>
+      <a href="/">Assess</a>
+      <a href="/about" class="active">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap console">
+  <section class="intro">
+    <h1>About this system</h1>
+    <p>A decision-support tool that predicts undergraduate academic risk so that
+       advisors can intervene early, before a student's performance deteriorates
+       beyond recovery.</p>
+  </section>
+
+  <div class="panel" style="max-width:760px">
+    <h2 class="panel-title">How it works</h2>
+    <p style="color:var(--ink-soft);margin-bottom:16px">
+      The system was built by training five supervised machine learning
+      classifiers — Decision Tree, Random Forest, Logistic Regression, Support
+      Vector Machine and K-Nearest Neighbour — on student academic and background
+      data. Each model was evaluated using ten-fold cross-validation and standard
+      metrics: accuracy, precision, recall, F1-score and AUC-ROC.
+    </p>
+    <p style="color:var(--ink-soft);margin-bottom:16px">
+      The <strong>{{ model_name }}</strong> model performed best overall and powers
+      the live predictions on the assessment page. Class imbalance in the training
+      data was addressed with SMOTE, and the most informative predictors were
+      identified using Recursive Feature Elimination.
+    </p>
+    <p style="color:var(--ink-soft)">
+      Predictions are estimates intended to guide human judgement. They do not
+      replace the assessment of academic staff and are not final determinations of
+      a student's results.
+    </p>
+  </div>
+</main>
+
+<footer class="wrap foot">
+  <p>Final-year research project · Department of Computer Science, University of Benin.</p>
+</footer>
+
+</body>
+</html>
