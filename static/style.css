@@ -1,0 +1,179 @@
+/* ============================================================
+   Student Academic Early-Warning System — University of Benin
+   Design: institutional, calm, data-forward.
+   Palette: deep academic green, parchment, ink, signal amber/red.
+   ============================================================ */
+
+:root{
+  --green-900:#123524;   /* deep institutional green */
+  --green-700:#1d5039;
+  --green-500:#2f7a56;
+  --parchment:#f4f1e8;   /* warm paper */
+  --paper:#fbfaf5;
+  --ink:#1c1b18;
+  --ink-soft:#5a564d;
+  --line:#e0dbcd;
+  --low:#2f7a56;         /* on-track / low risk */
+  --moderate:#c6811d;    /* amber */
+  --high:#b23a2e;        /* red */
+  --shadow:0 1px 0 rgba(0,0,0,.03), 0 8px 30px -18px rgba(18,53,36,.35);
+  --radius:10px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Inter",system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--parchment);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+
+/* ---------- Masthead ---------- */
+.masthead{
+  background:var(--green-900);
+  color:#f0ede3;
+  border-bottom:3px solid var(--green-500);
+}
+.masthead-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 24px}
+.crest{display:flex;align-items:center;gap:14px}
+.crest-mark{
+  width:44px;height:44px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--paper);color:var(--green-900);
+  font-family:"Fraunces",serif;font-weight:600;font-size:1.05rem;
+  letter-spacing:.02em;
+}
+.crest-text{display:flex;flex-direction:column;line-height:1.25}
+.crest-text strong{font-family:"Fraunces",serif;font-weight:500;font-size:1.06rem}
+.crest-text span{font-size:.8rem;color:#b7c8bd}
+nav{display:flex;gap:8px}
+nav a{
+  color:#cdd8d0;text-decoration:none;font-size:.9rem;font-weight:500;
+  padding:8px 14px;border-radius:6px;transition:background .15s,color .15s;
+}
+nav a:hover{background:rgba(255,255,255,.08);color:#fff}
+nav a.active{background:var(--green-500);color:#fff}
+
+/* ---------- Intro ---------- */
+.console{padding:44px 24px 60px}
+.intro{max-width:620px;margin-bottom:32px}
+.intro h1{
+  font-family:"Fraunces",serif;font-weight:500;
+  font-size:2.15rem;line-height:1.1;letter-spacing:-.01em;
+  color:var(--green-900);margin-bottom:12px;
+}
+.intro p{color:var(--ink-soft);font-size:1.02rem;max-width:56ch}
+
+/* ---------- Panels ---------- */
+.panel-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;
+}
+.panel{
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow);padding:26px 26px 30px;
+}
+.panel-title{
+  font-family:"Fraunces",serif;font-weight:500;font-size:1.15rem;
+  color:var(--green-900);margin-bottom:20px;
+  padding-bottom:12px;border-bottom:1px solid var(--line);
+}
+
+/* ---------- Form ---------- */
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.86rem;font-weight:500;margin-bottom:6px;color:var(--ink)}
+.field .hint{color:var(--ink-soft);font-weight:400}
+.field input,.field select{
+  width:100%;padding:10px 12px;font-size:.95rem;font-family:inherit;
+  color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:7px;
+  transition:border-color .15s,box-shadow .15s;
+}
+.field input:focus,.field select:focus{
+  outline:none;border-color:var(--green-500);
+  box-shadow:0 0 0 3px rgba(47,122,86,.15);
+}
+.assess-btn{
+  width:100%;margin-top:8px;padding:13px;font-size:.98rem;font-weight:600;
+  font-family:inherit;color:#fff;background:var(--green-700);
+  border:none;border-radius:8px;cursor:pointer;
+  transition:background .15s,transform .05s;
+}
+.assess-btn:hover{background:var(--green-900)}
+.assess-btn:active{transform:translateY(1px)}
+.assess-btn:disabled{opacity:.6;cursor:progress}
+
+/* ---------- Result panel ---------- */
+.result-panel{min-height:420px;display:flex;flex-direction:column}
+.result-empty{
+  margin:auto;text-align:center;color:var(--ink-soft);max-width:32ch;
+  display:flex;flex-direction:column;align-items:center;gap:18px;
+}
+.dial-placeholder{
+  width:90px;height:90px;border-radius:50%;
+  border:3px dashed var(--line);
+}
+
+.verdict{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.verdict-label{
+  font-family:"Fraunces",serif;font-size:1.9rem;font-weight:600;line-height:1;
+}
+.verdict-band{font-size:.85rem;font-weight:600;padding:4px 10px;border-radius:20px}
+
+/* signal states */
+.state-low .verdict-label{color:var(--low)}
+.state-low .verdict-band{background:rgba(47,122,86,.12);color:var(--low)}
+.state-low .gauge-fill{background:var(--low)}
+.state-moderate .verdict-label{color:var(--moderate)}
+.state-moderate .verdict-band{background:rgba(198,129,29,.14);color:var(--moderate)}
+.state-moderate .gauge-fill{background:var(--moderate)}
+.state-high .verdict-label{color:var(--high)}
+.state-high .verdict-band{background:rgba(178,58,46,.12);color:var(--high)}
+.state-high .gauge-fill{background:var(--high)}
+
+/* gauge */
+.gauge{margin-bottom:24px}
+.gauge-track{
+  width:100%;height:14px;background:#ece7d8;border-radius:20px;overflow:hidden;
+}
+.gauge-fill{
+  height:100%;width:0;border-radius:20px;
+  transition:width .7s cubic-bezier(.22,1,.36,1);
+}
+.gauge-readout{display:flex;align-items:baseline;gap:8px;margin-top:10px}
+.gauge-readout #risk-value{font-size:1.6rem;font-weight:600;font-family:"Fraunces",serif}
+.gauge-caption{color:var(--ink-soft);font-size:.85rem}
+
+/* readout list */
+.readout{border-top:1px solid var(--line);padding-top:8px}
+.readout>div{
+  display:flex;justify-content:space-between;gap:16px;
+  padding:11px 0;border-bottom:1px solid var(--line);
+}
+.readout dt{color:var(--ink-soft);font-size:.9rem}
+.readout dd{font-weight:600;font-size:.94rem;text-align:right;max-width:60%}
+
+.model-note{margin-top:18px;font-size:.82rem;color:var(--ink-soft)}
+
+.result-error{
+  margin:auto;text-align:center;color:var(--high);
+  background:rgba(178,58,46,.08);border:1px solid rgba(178,58,46,.2);
+  padding:16px;border-radius:8px;
+}
+
+/* ---------- Footer ---------- */
+.foot{padding:30px 24px 48px}
+.foot p{color:var(--ink-soft);font-size:.82rem;max-width:70ch}
+
+/* ---------- Responsive ---------- */
+@media (max-width:800px){
+  .panel-grid{grid-template-columns:1fr}
+  .intro h1{font-size:1.8rem}
+  .result-panel{min-height:auto}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .gauge-fill{transition:none}
+}
